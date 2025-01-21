@@ -14,10 +14,10 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 url_base = 'https://github.com/geektutu/tensorflow-tutorial-samples/tree/master/mnist/data_set/'
 key_file = {
-    'train_img':'train-images-idx3-ubyte.gz',
-    'train_label':'train-labels-idx1-ubyte.gz',
-    'test_img':'t10k-images-idx3-ubyte.gz',
-    'test_label':'t10k-labels-idx1-ubyte.gz'
+    'train_img': 'train-images-idx3-ubyte.gz',
+    'train_label': 'train-labels-idx1-ubyte.gz',
+    'test_img': 't10k-images-idx3-ubyte.gz',
+    'test_label': 't10k-labels-idx1-ubyte.gz'
 }
 
 dataset_dir = os.path.dirname(os.path.abspath(__file__))
@@ -39,9 +39,11 @@ def _download(file_name):
     urllib.request.urlretrieve(url_base + file_name, file_path)
     print("Done")
 
+
 def download_mnist():
     for v in key_file.values():
         _download(v)
+
 
 def _load_label(file_name):
     file_path = dataset_dir + "/" + file_name
@@ -52,6 +54,7 @@ def _load_label(file_name):
     print("Done")
 
     return labels
+
 
 def _load_img(file_name):
     file_path = dataset_dir + "/" + file_name
@@ -64,14 +67,16 @@ def _load_img(file_name):
 
     return data
 
+
 def _convert_numpy():
     dataset = {}
-    dataset['train_img'] =  _load_img(key_file['train_img'])
+    dataset['train_img'] = _load_img(key_file['train_img'])
     dataset['train_label'] = _load_label(key_file['train_label'])
     dataset['test_img'] = _load_img(key_file['test_img'])
     dataset['test_label'] = _load_label(key_file['test_label'])
 
     return dataset
+
 
 def init_mnist():
     download_mnist()
@@ -80,6 +85,7 @@ def init_mnist():
     with open(save_file, 'wb') as f:
         pickle.dump(dataset, f, -1)
     print("Done!")
+
 
 def _change_one_hot_label(X):
     T = np.zeros((X.size, 10))

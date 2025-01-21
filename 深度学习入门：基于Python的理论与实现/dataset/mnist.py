@@ -12,7 +12,7 @@ import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-url_base = 'https://github.com/geektutu/tensorflow-tutorial-samples/tree/master/mnist/data_set/'
+url_base = 'https://github.com/golbin/TensorFlow-MNIST/blob/master/mnist/data/'
 key_file = {
     'train_img': 'train-images-idx3-ubyte.gz',
     'train_label': 'train-labels-idx1-ubyte.gz',
